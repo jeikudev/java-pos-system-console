@@ -1,5 +1,9 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+        
+
         Menu[] products = {
                 new Menu("Pandesal", 5, 2),
                 new Menu("Ensaymada", 5, 6),
@@ -9,12 +13,20 @@ public class Main {
         };
 
         int productMinLength = 20;
+        int priceAndQuantityMinLength = 10;
 
         System.out.println(
-                "_______________________________________\n" +
-                        "| Name         Price         Quantity |");
-        for (int i = 0; i < products.length; i++) {
-            System.out.println("| " + Utils.spaceFiller(products[i].name, productMinLength) + " | " + products[i].price + " |");
+                "____________________________________________\n" +
+                        "| " + Utils.spaceFiller("Name", productMinLength) +  Utils.spaceFiller("Price", priceAndQuantityMinLength) + Utils.spaceFiller("Quantity", priceAndQuantityMinLength) + "  |");
+        for (Menu product : products) {
+            System.out.println("| " + Utils.spaceFiller(product.name, productMinLength)
+                    + " "
+                    + Utils.spaceFiller(Double.toString(product.price), priceAndQuantityMinLength)
+                    + " "
+                    + Utils.spaceFiller(Integer.toString(product.quantity), priceAndQuantityMinLength) + "|");
         }
+        System.out.println("---------------------------------------------");
+
+
     }
 }
