@@ -1,10 +1,11 @@
+import javax.sound.midi.Soundbank;
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-
         Scanner userInputScanner = new Scanner(System.in);
+        ArrayList<String> ShoppingCart = new ArrayList<>();
 
         Menu[] products = {
                 new Menu("Pandesal", 5, 2),
@@ -28,6 +29,7 @@ public class Main {
                     + " "
                     + Utils.spaceFiller(Integer.toString(product.quantity), priceAndQuantityMinLength) + "|");
         }
+        System.out.println("| 0 - " + Utils.spaceFiller("Checkout", productMinLength + 22) + "|");
         System.out.print("-------------------------------------------------\n" +
                 "Select Order: ");
 
@@ -45,9 +47,11 @@ public class Main {
 
             if (userChoice == 0) {
                 System.out.println("Proceeding to checkout...");
+                System.out.println(ShoppingCart);
             } else {
                 Menu chosenProduct = products[userChoice - 1];
                 System.out.println("You selected: " + chosenProduct.name);
+                ShoppingCart.add(chosenProduct.name);
                 System.out.print("Select Order: ");
             }
         }
